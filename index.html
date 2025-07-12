@@ -6,15 +6,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <!-- <div id="divM">
+        <div id="menu" onclick="toggleMenu()">☰</div>
+        <div id="links">
+            <a href="https://www.tiktok.com/@anatwdu/video/7512093179961707781?is_from_webapp=1&sender_device=pc">game</a>
+            <a href="https://www.tiktok.com/@anatwdu/video/7512093179961707781?is_from_webapp=1&sender_device=pc">movie</a>
+        </div>
+    </div> -->
+
+
+    <div id="divM" onclick="openMenu()">☰</div>
+
+    <div id="divS">
+        <ul>
+            <a id="item" href="../../JS 16-,,,/JS 16@/">game</a>
+            <a id="item" href="../JS 14@/">movie</a>
+        </ul>
+        <button onclick="closeMenu()">✖</button>
+    </div>
+
+    <div id="divasli">
+
     <input type="text" id="inp1" placeholder="name: ">
-    <button onclick="addMovie()" id="butt1">add</button>
-    <button onclick="remove()" id="butt2">del</button>
-    <button onclick="checkMovie()" id="butt3">search</button>
+    <button onclick="addMovie()" id="butt1">Add</button>
+    <button onclick="remove()" id="butt2">Delete</button>
+    <button onclick="checkMovie()" id="butt3">Search</button>
 
     <div id="div1">
     <ul id="movielist"></ul>
     <p id="message"></p>
+    </div>
+
     </div>
 
     <script>
@@ -44,12 +67,12 @@
             btns.className = "buttons";
 
             let up = document.createElement("button");
-            up.textContent = "⬆️";
+            up.textContent = "▲";
             up.className = "up";
             up.onclick = () => moveUp(index);
 
             let down = document.createElement("button");
-            down.textContent = "⬇️";
+            down.textContent = "▼";
             down.className = "down";
             down.onclick = () => moveDown(index);
 
@@ -112,6 +135,21 @@
           if (index === movies.length - 1) return;
           [movies[index], movies[index + 1]] = [movies[index + 1], movies[index]];
           updateList();
+        }
+
+        // function toggleMenu() {
+        //     const menu = document.getElementById("links")
+        //     menu.style.display = menu.style.display === "flex" ? "none" : "flex"
+        // }
+
+        function openMenu() {
+            document.getElementById("divS").classList.add("open")
+            document.getElementById("divM").style.display = "none"
+        }
+
+        function closeMenu() {
+            document.getElementById("divS").classList.remove("open")
+            document.getElementById("divM").style.display = "block"
         }
 
         updateList()
